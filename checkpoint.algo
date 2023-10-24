@@ -1,0 +1,18 @@
+ALGORITHM algorithm_name
+VAR
+    t : ARRAY_OF INTEGER[n];
+    j,tmp:INTEGER
+BEGIN
+    FOR i FROM 0 TO n-1  DO
+        j:=i-1
+        tmp:=t[i]
+//Inside the loop, a variable j is initialized to the index one position before i.
+//tmp is assigned to t[i]. This element will be compared and moved within the sorted part of the array.
+        WHILE (j>=0 and t[j]>tmp) DO
+//Within this loop, elements greater than tmp are shifted to the right to make space for tmp
+            t[j+1]:=t[j]
+//Once the correct position is found, the temporary value tmp is inserted into the sorted part of the array at index j+1.
+            j:=j-1
+        END_WHILE
+    t[j+1]=tmp
+    END_FOR
